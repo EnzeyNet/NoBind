@@ -1,6 +1,6 @@
 (function(angular, $) {
 
-	var module = angular.module('net.enzey.bindonce', []);
+	var module = angular.module('net.enzey.nobind', []);
 
 	var ctrlBind = function($parse) {
 		return function($scope) {
