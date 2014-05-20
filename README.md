@@ -14,5 +14,5 @@ After including this module as a dependent the following directives can be used.
 | Directive Name | Description |
 | :------------- | :---------- |
 | nz-no-bind | Causes no binding for this element and all child elements. |
-| nz-no-bind-children | Causes no binding for all child elements, excluding the element this is applied to. |
+| nz-no-bind-children | Causes no binding for all child elements, excluding the element this directive is applied to. |
 
