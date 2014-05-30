@@ -1,4 +1,4 @@
-(function(angular, $) {
+(function(angular) {
 
 	var module = angular.module('net.enzey.nobind', []);
 
@@ -8,7 +8,11 @@
 				// varExpression.exp is passed as the 'old' value
 				//   so that angular can remove the expression text from an
 				//   element's attributes, such as when using an expression for the class.
-				func($parse(varExpression)(this), varExpression.exp);
+				if (!func && typeof varExpression === 'function') {
+					varExpression();
+				} else {
+					func($parse(varExpression)(this), varExpression.exp);
+				}
 			};
 			$scope.$watch = resolveValueWithoutWatching;
 			$scope.$watchCollection = resolveValueWithoutWatching;
@@ -48,4 +52,4 @@
 		};
 	});
 
-})(angular, jQuery);
+})(angular);
