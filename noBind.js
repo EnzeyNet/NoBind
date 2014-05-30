@@ -4,12 +4,14 @@
 
 	var ctrlBind = function($parse) {
 		return function($scope) {
-			$scope.$watch = function(varExpression, func) {
+			var resolveValueWithoutWatching = function(varExpression, func) {
 				// varExpression.exp is passed as the 'old' value
 				//   so that angular can remove the expression text from an
 				//   element's attributes, such as when using an expression for the class.
-				func($parse(varExpression)($scope), varExpression.exp);
+				func($parse(varExpression)(this), varExpression.exp);
 			};
+			$scope.$watch = resolveValueWithoutWatching;
+			$scope.$watchCollection = resolveValueWithoutWatching;
 		};
 	};
 
